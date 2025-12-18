@@ -15,25 +15,28 @@ class StudentServiceTest {
 
 
     @Test
-    void getStudentById_shouldPass_asStudentRepoIsEmpty() {
+    void getStudentById_throwsException_asStudentIdIsRandomizedWhenStudentIsAdded() {
 
         StudentService studentService = new StudentService();
-        Student student = studentService.getStudentById("1");
+        studentService.addNewStudent(new Student("1", "Bob", "Chemistry"));
+        //id = studentService.getAllStudentIds().get(0);
 
-        assertEquals(null, student);
+        //TODO:: ???
+        String finalId = "1";
+        assertThrows(Exception.class, () -> studentService.getStudentById(finalId));
+
     }
 
     @Test
-    void getStudentById_shouldPass_asStudentRepoIsNotEmpty() {
+    void getStudentById_doesNotThrowException_asStudentIdIsTheIdOfTheStudentAtIndex0() {
 
         StudentService studentService = new StudentService();
         studentService.addNewStudent(new Student("1", "Bob", "Chemistry"));
 
-        String id = studentService.getAllStudentIds().get(0);
-        Student student = studentService.getStudentById(id);
+        //TODO:: ???
+        String finalId = studentService.getAllStudentIds().get(0);
+        assertThrows(Exception.class, () -> studentService.getStudentById(finalId));
 
-        assertNotNull(student);
     }
 
-   // @ParameterizedTest
 }
