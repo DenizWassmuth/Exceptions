@@ -5,21 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentServiceTest {
 
-//    @Test
-//    void addNewStudent() {
-//    }
-//
-//    @Test
-//    void getAllStudents() {
-//    }
-
     @Test
     void getStudentById_ShouldThrowException_WhenStudentRepositoryIsEmpty(){
         StudentService studentService = new StudentService();
         assertThrows(Exception.class, () -> studentService.getStudentById("1"));
     }
-
-
 
     @Test
     void getStudentById_throwsInvalidIdException_asStudentIdIsRandomizedWhenStudentIsAdded() {
@@ -28,10 +18,8 @@ class StudentServiceTest {
         studentService.addNewStudent(new Student("1", "Bob", "Chemistry"));
 
         //TODO:: ???
-        //String finalId = studentService.getAllStudentIds().get(0);
         String finalId = "1";
         assertThrows(InvalidIdException.class, () -> studentService.getStudentById(finalId));
-
     }
 
     @Test
@@ -44,5 +32,4 @@ class StudentServiceTest {
         String finalId = studentService.getAllStudentIds().get(0);
         assertDoesNotThrow(() -> studentService.getStudentById(finalId));
     }
-
 }

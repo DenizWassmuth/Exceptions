@@ -6,6 +6,11 @@ public class StudentService {
     private final StudentRepo repo = new StudentRepo();
 
     public Student addNewStudent(Student newStudent) {
+
+        if (newStudent == null) {
+            throw new IllegalArgumentException("Student must not be null");
+        }
+
         Student studentToSave = newStudent.withId(UUID.randomUUID().toString());
         return repo.save(studentToSave);
     }
@@ -34,7 +39,6 @@ public class StudentService {
         if (repo.getAllStudents().isEmpty()){
 
             throw new RuntimeException("student repo is empty");
-            //return null;
         }
 
         return repo.getAllStudents().stream().map(Student::id).toList();
