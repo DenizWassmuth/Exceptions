@@ -14,10 +14,10 @@ public class StudentService {
         return repo.getAllStudents();
     }
 
-    public Student getStudentById(String id) throws Exception, InvalidIdException {
+    public Student getStudentById(String id) {
 
         if (repo.getAllStudents().isEmpty()){
-            throw new Exception("Student repo is empty!");
+            throw new RuntimeException("Student repo is empty!");
         }
 
         for (Student student : repo.getAllStudents()){
@@ -26,13 +26,15 @@ public class StudentService {
             }
         }
 
-        throw new InvalidIdException("Student not found in repo!");
+        throw new InvalidIdException();
     }
 
-    public List<String> getAllStudentIds(){
+    public List<String> getAllStudentIds() {
 
         if (repo.getAllStudents().isEmpty()){
-            return null;
+
+            throw new RuntimeException("student repo is empty");
+            //return null;
         }
 
         return repo.getAllStudents().stream().map(Student::id).toList();

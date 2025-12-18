@@ -13,11 +13,15 @@ public class Main {
         System.out.println();
         System.out.println("Student saved: " + savedStudent);
 
-        try{
-           Student firstStudent =  studentService.getStudentById("1");
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+//        try{
+//           Student firstStudent =  studentService.getStudentById("1");
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+
+        //Student firstStudent =  studentService.getStudentById(savedStudent.id());
+
+        Student firstStudent = studentService.getStudentById("1");
     }
 }
