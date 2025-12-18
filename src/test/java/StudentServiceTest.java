@@ -16,7 +16,7 @@ class StudentServiceTest {
     @Test
     void getStudentById_ShouldThrowException_WhenStudentRepositoryIsEmpty(){
         StudentService studentService = new StudentService();
-        assertThrows(Exception.class, () -> studentService.getStudentById(""));
+        assertThrows(Exception.class, () -> studentService.getStudentById("1"));
     }
 
 
@@ -26,9 +26,9 @@ class StudentServiceTest {
 
         StudentService studentService = new StudentService();
         studentService.addNewStudent(new Student("1", "Bob", "Chemistry"));
-        //id = studentService.getAllStudentIds().get(0);
 
         //TODO:: ???
+        //String finalId = studentService.getAllStudentIds().get(0);
         String finalId = "1";
         assertThrows(InvalidIdException.class, () -> studentService.getStudentById(finalId));
 
@@ -42,8 +42,7 @@ class StudentServiceTest {
 
         //TODO:: ???
         String finalId = studentService.getAllStudentIds().get(0);
-        assertThrows(Exception.class, () -> studentService.getStudentById(finalId));
-
+        assertDoesNotThrow(() -> studentService.getStudentById(finalId));
     }
 
 }

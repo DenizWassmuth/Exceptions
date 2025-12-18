@@ -14,7 +14,7 @@ public class StudentService {
         return repo.getAllStudents();
     }
 
-    public Student getStudentById(String id) throws InvalidIdException, Exception{
+    public Student getStudentById(String id) throws Exception, InvalidIdException {
 
         if (repo.getAllStudents().isEmpty()){
             throw new Exception("Student repo is empty!");
