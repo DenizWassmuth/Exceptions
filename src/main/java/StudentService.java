@@ -15,6 +15,26 @@ public class StudentService {
     }
 
     public Student getStudentById(String id){
+
+        if (repo.getAllStudents().isEmpty()){
+            return null;
+        }
+
+        for (Student student : repo.getAllStudents()){
+            if (student.id().equals(id)){
+                return student;
+            }
+        }
+
         return null;
+    }
+
+    public List<String> getAllStudentIds(){
+
+        if (repo.getAllStudents().isEmpty()){
+            return null;
+        }
+
+        return repo.getAllStudents().stream().map(Student::id).toList();
     }
 }
